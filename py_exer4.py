@@ -1,13 +1,9 @@
 data = []
-
 class Enrollment():
-
-
     def printSubject():   
-        print("----------LISTS OF SUBJECTS----------")  
+        print("----------LISTS OF SUBJECTS----------")
 
-        print("\n".join(map(lambda sub: str(data.index(sub)+1) +" - " +sub, data )))
-     
+        print("\n".join(map(lambda sub: str(data.index(sub)+1) +" - " +sub, data )))     
     def addSubject(units):
         done=True
         while (done):
@@ -19,7 +15,6 @@ class Enrollment():
             elif units  >=24:
                 print("***","Subjects exceeded to 24 units","***")
                 done = False
-
             else:
                 data.append(subject)
                 print(subject+" successfully added!")                    
@@ -27,8 +22,7 @@ class Enrollment():
     
     def dropSubject():
         pass
-        
-
+    
 studentName= input("Enter your name: ")
 print("Welcome",studentName)
 while True:
@@ -47,4 +41,4 @@ while True:
     else:
         print("***NO CHOICE**")
         continue
-#Created By Raizen Sangalang 
+#Created By Raizen Sangalang
