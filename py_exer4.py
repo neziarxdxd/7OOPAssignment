@@ -1,9 +1,16 @@
 data = []
-class Enrollment():
-    def printSubject():   
-        print("----------LISTS OF SUBJECTS----------")
 
-        print("\n".join(map(lambda sub: str(data.index(sub)+1) +" - " +sub, data )))     
+class Enrollment():
+
+    def __init__(self, name,data):
+        self.name = name        
+        self.data= data
+
+    def printSubject():   
+        print("----------LISTS OF SUBJECTS----------")  
+
+        print("\n".join(map(lambda sub: str(data.index(sub)+1) +" - " +sub, data )))
+     
     def addSubject(units):
         done=True
         while (done):
@@ -15,15 +22,37 @@ class Enrollment():
             elif units  >=24:
                 print("***","Subjects exceeded to 24 units","***")
                 done = False
+
             else:
                 data.append(subject)
                 print(subject+" successfully added!")                    
                 done= False
     
     def dropSubject():
-        pass
-    
+        d =True
+        while d:
+            if len(data)==0:
+                print("*** NO SUBJECTS TO REMOVE ***")
+                d= False
+            else:
+                try:
+                    print("----------REMOVING SUBJECTS----------")
+                    print("\n".join(map(lambda sub: str(data.index(sub)+1) +" - " +sub, data )))                
+                    subject_drop = int(input("Enter subject to be removed: "))-1
+                    if subject_drop < 0:
+                        raise IndexError
+                    else:
+                        print("You remove",data.pop(subject_drop))
+                        d= False                
+                except IndexError:
+                    print("*** Out of choices ***")
+                    continue
+                except ValueError:
+                    print("*** Out of choices ***")
+                    continue
+
 studentName= input("Enter your name: ")
+student = Enrollment(studentName,data)
 print("Welcome",studentName)
 while True:
     print("----------MAIN MENU----------")
@@ -39,6 +68,8 @@ while True:
             print("Thank youu!")
             exit()                
     else:
-        print("***NO CHOICE**")
+        print("***Not in the choices***")
         continue
-#Created By Raizen Sangalang
+#Created By Raizen Sangalang 
+# Python Programming 
+
