@@ -10,3 +10,6 @@ Use classes, lists, exceptions
 
 Options:
 You may use other functions of python to make the code simpler and easy to read.
+
+##  PEXER_1
+### Instructions
