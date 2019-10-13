@@ -1,75 +1,31 @@
-data = []
+from tkinter import *
 
-class Enrollment():
-
-    def __init__(self, name,data):
-        self.name = name        
-        self.data= data
-
-    def printSubject():   
-        print("----------LISTS OF SUBJECTS----------")  
-
-        print("\n".join(map(lambda sub: str(data.index(sub)+1) +" - " +sub, data )))
-     
-    def addSubject(units):
-        done=True
-        while (done):
-            print("----------ADDING SUBJECTS----------")
-            subject = input("Enter subject: ")
-            if subject in data:
-                print("***",subject,"is already enrolled ***")
-                continue
-            elif units  >=24:
-                print("***","Subjects exceeded to 24 units","***")
-                done = False
-
-            else:
-                data.append(subject)
-                print(subject+" successfully added!")                    
-                done= False
+def hello():
+    x=i.get() 
+    if x== 1:
+        label.configure(background="red",text="You selected the option {}".format(x))
+        rbtn_red.configure(foreground="red")
+    if x== 2:
+        label.configure(background="green",text="You selected the option {}".format(x))
+        rbtn_green.configure(foreground="green")
+    if x== 3:
+        label.configure(background="blue",text="You selected the option {}".format(x))
+        rbtn_blue.configure(foreground="blue")
     
-    def dropSubject():
-        d =True
-        while d:
-            if len(data)==0:
-                print("*** NO SUBJECTS TO REMOVE ***")
-                d= False
-            else:
-                try:
-                    print("----------REMOVING SUBJECTS----------")
-                    print("\n".join(map(lambda sub: str(data.index(sub)+1) +" - " +sub, data )))                
-                    subject_drop = int(input("Enter subject to be removed: "))-1
-                    if subject_drop < 0:
-                        raise IndexError
-                    else:
-                        print("You remove",data.pop(subject_drop))
-                        d= False                
-                except IndexError:
-                    print("*** Out of choices ***")
-                    continue
-                except ValueError:
-                    print("*** Out of choices ***")
-                    continue
+    
+app = Tk()
+app.geometry("200x200")
 
-studentName= input("Enter your name: ")
-student = Enrollment(studentName,data)
-print("Welcome",studentName)
-while True:
-    print("----------MAIN MENU----------")
-    units = (len(data)) * 3    
-    print("Current units enrolled",units, "\n1-add\n2-drop\n3-print\n4-exit")    
-    choice = input("Enter your choice: ")
-    if choice in ['1','2','3','4']:
-        if choice == '1': Enrollment.addSubject(units)
-        elif choice == '2': Enrollment.dropSubject()            
-        elif choice =='3': Enrollment.printSubject()            
-        elif choice == '4':
-            print("Exiting.... ")
-            print("Thank youu!")
-            exit()                
-    else:
-        print("***Not in the choices***")
-        continue
-#Created By Raizen Sangalang 
-# Python Programming 
+i=IntVar()
+rbtn_red=Radiobutton(text="Red", variable=i,value=1,command=hello, )
+rbtn_green=Radiobutton(text="Green", variable=i,value=2,command=hello,)
+rbtn_blue=Radiobutton(text="Blue",variable=i,value=3,command=hello)
 
+label = Label()
+#Place
+rbtn_red.place(relx=0.1, rely=0.3 , anchor="w")
+label.place(relx=0.1, rely=0.8 , anchor="w")
+rbtn_green.place(relx=0.1, rely=0.4 , anchor="w")
+rbtn_blue.place(relx=0.1, rely=0.5 , anchor="w")
+
+app.mainloop()
